@@ -4,6 +4,8 @@ This tool lets you toggle the touchpad by pressing both the left and the right b
 
 This is a answer to [this post](https://www.reddit.com/r/RemarkableTablet/comments/b48tbv/).
 
+**DISCLAIMER**: I won't be liable for any harm done using this software.
+
 # Install
 
 Copy the latest release binary (or compile it yourself using the [cross-compiler](https://remarkable.engineering/)) to the reMarkable.
