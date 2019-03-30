@@ -25,7 +25,6 @@ struct rm_input_event {
         int32_t value;
 };
 
-// Source: https://github.com/canselcik/libremarkable/blob/master/src/input/gpio.rs
 enum Button {
     LEFT,
     MIDDLE,
@@ -35,6 +34,7 @@ enum Button {
 };
 
 ssize_t codeToButton(uint16_t evCode) {
+  // Source: https://github.com/canselcik/libremarkable/blob/master/src/input/gpio.rs
   switch(evCode) {
       case 105:
           return LEFT;
@@ -56,8 +56,8 @@ ssize_t codeToButton(uint16_t evCode) {
 int main(int argc, char const *argv[])
 {
 
-    // Open file where input events for the wacom digitizer get received
     int touchInputFd = open("/dev/input/event1", O_WRONLY | O_NONBLOCK); // Even though we won't write
+    // Open file where input events for the hardware buttons (over gpio pins) get received
     FILE* gpioInputFp = gpioInputFp = fopen("/dev/input/event2", "r");
 
     if(gpioInputFp == NULL) {
@@ -67,8 +67,6 @@ int main(int argc, char const *argv[])
 
     struct rm_input_event inputEvent; // Will contain the read data
     size_t inputEventSize = sizeof(inputEvent);
-    //size_t timeSize = sizeof(inputEvent.time);
-    //size_t packetSize = inputEventSize - timeSize; // Size of data that will get sent in packets
     size_t readBytes;
 
     uint8_t buttonState[5];
@@ -102,7 +100,7 @@ int main(int argc, char const *argv[])
 
         if(buttonState[LEFT] && buttonState[RIGHT] && (button == LEFT || button == RIGHT)) {
             if(!touchGrabbed) {
-                printf("Touchpad grabbed. Not input possible!\n");
+                printf("Touchpad grabbed. No input possible!\n");
                 ioctl(touchInputFd, EVIOCGRAB, 1); // Block touch input
             } else {
                 printf("Touchpad released. Input possible again.\n");
