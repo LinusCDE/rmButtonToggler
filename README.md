@@ -1,22 +1,24 @@
-# rmTouchToggler
+# rmButtonToggler
 
-This tool lets you toggle the touchpad by pressing both the left and the right button at once.
+This tool lets you toggle all button input by pressing the left and right buttons together.
 
-This is a answer to [this post](https://www.reddit.com/r/RemarkableTablet/comments/b48tbv/).
+## IMPORTANT
+Blocking all buttons also **includes** the **power/wakeup** button!  
+Should the device enter sleep mode, you either need to perform the button combination again (it'll work even when sleeping) or restart the device by holding the power button for about 10 seconds (that will still work). Otherwise you won't be able to get the device out of sleep.
 
-**DISCLAIMER**: I won't be liable for any harm done using this software.
+**DISCLAIMER:** I won't be liable for any harm done using this software.
 
 # Install
 
 Copy the latest release binary (or compile it yourself using the [cross-compiler](https://remarkable.engineering/)) to the reMarkable.
-It should be in the home directory (at `/home/root/touchToggler`).
+It should be in the home directory (at `/home/root/button_toggler`).
 
-Copy the file `touchToggler.service` into `/etc/system/systemd/`.
+Copy the file `button_toggler.service` into `/etc/system/systemd/`.
 
 SSH into the reMarkable.
 
-Run `chmod +x touchToggler`.
+Run `chmod +x button_toggler`.
 
-Start it using `systemctl start touchToggler` and stop it using `systemctl stop touchToggler`.
+Start it using `systemctl start button_toggler` and stop it using `systemctl stop button_toggler`.
 
-To enable it on autostart run `systemctl enable touchToggler`. To revert this run `systemctl disable touchToggler`.
+To enable it on autostart run `systemctl enable button_toggler`. To revert this run `systemctl disable button_toggler`.
