@@ -13,7 +13,7 @@ Should the device enter sleep mode, you either need to perform the button combin
 Copy the latest release binary (or compile it yourself using the [cross-compiler](https://remarkable.engineering/)) to the reMarkable.
 It should be in the home directory (at `/home/root/button_toggler`).
 
-Copy the file `button_toggler.service` into `/etc/system/systemd/`.
+Copy the file `button_toggler.service` into `/etc/systemd/system/`.
 
 SSH into the reMarkable.
 
